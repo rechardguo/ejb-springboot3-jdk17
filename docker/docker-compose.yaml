@@ -1,0 +1,37 @@
+services:
+  app-db:
+    build: ./db
+    container_name: app-db
+    ports:
+      - 3400:3306 
+    volumes:  
+      - appdb_data:/var/lib/mysql  
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: appdb
+
+  app:  
+    build: ./ejb-web
+    container_name: app
+    ports:
+      - 8180:8080
+      - 8543:8443
+      - 11000:10000 
+      - 13345:12345
+    depends_on:
+      - app-db
+      - mq
+
+  mq:
+    build: ./mq
+    container_name: app-mq                      
+    volumes:
+            - mqdata_data:/mnt/mqm
+    environment:
+              LICENSE: accept
+              MQ_DEV: false
+              MQ_QMGR_NAME: CBMQ    
+    restart: always
+volumes:
+  appdb_data:
+  mqdata_data:

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ejb-jar id="ejb-jar_ID" version="2.1" 
+xmlns="http://java.sun.com/xml/ns/j2ee" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/ejb-jar_2_1.xsd">
+
+<!--https://jakarta.ee/specifications/enterprise-beans/4.0/jakarta-enterprise-beans-spec-core-4.0.html#a5910-->
+<!--
+<ejb-jar xmlns="https://jakarta.ee/xml/ns/jakartaee"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                https://jakarta.ee/xml/ns/jakartaee/ejb-jar_4_0.xsd"
+      version="4.0">
+-->
+    <display-name>EJB Jar</display-name>
+	<enterprise-beans>
+		<session id="CounterService">
+			<ejb-name>CounterService</ejb-name>
+			<home>rechard.learn.ejb.CounterBeanHome</home>
+			<remote>rechard.learn.ejb.CounterBeanRemote</remote>
+			<ejb-class>rechard.learn.ejb.CounterBean</ejb-class>
+			<session-type>Stateless</session-type>
+			<transaction-type>Container</transaction-type>
+		</session>
+
+		<message-driven id="TestMDB">
+			<ejb-name>TestMDB</ejb-name>
+			<ejb-class>rechard.learn.ejb.TestMDB</ejb-class>
+			<messaging-type>jakarta.jms.MessageListener</messaging-type>
+			<transaction-type>Container</transaction-type>
+			<message-destination-type>jakarta.jms.Queue</message-destination-type>
+			<activation-config>
+				<activation-config-property>
+					<activation-config-property-name>acknowledgeMode</activation-config-property-name>
+					<activation-config-property-value>Auto-acknowledge</activation-config-property-value>
+				</activation-config-property>
+				<activation-config-property>
+					<activation-config-property-name>destinationType</activation-config-property-name>
+					<activation-config-property-value>jakarta.jms.Queue</activation-config-property-value>
+				</activation-config-property>
+				<activation-config-property>
+					<activation-config-property-name>connectionFactoryLookup</activation-config-property-name>
+					<activation-config-property-value>java:/jboss/jms/XAConnectionFactory</activation-config-property-value>
+				</activation-config-property>
+				<activation-config-property>
+					<activation-config-property-name>destinationLookup</activation-config-property-name>
+					<activation-config-property-value>java:/jboss/jms/queue/TestQueue</activation-config-property-value>
+				</activation-config-property>
+			</activation-config>
+		</message-driven>
+    </enterprise-beans>	
+		 
+	<assembly-descriptor>
+		<container-transaction>
+			<method>
+				<ejb-name>CounterService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>increment</method-name>
+			</method>
+			<trans-attribute>Required</trans-attribute>
+		</container-transaction>
+	</assembly-descriptor>
+</ejb-jar>
+

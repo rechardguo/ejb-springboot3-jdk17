@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>rechard.learn</groupId>
+    <artifactId>ejb-demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <packaging>jar</packaging>
+  <artifactId>ejb-bean</artifactId>
+  
+  
+    <dependencies>
+		<dependency>
+			<groupId>rechard.learn</groupId>
+			<artifactId>ejb-bean-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.ejb</groupId>
+			<artifactId>jakarta.ejb-api</artifactId>
+			<version>4.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta.jms</groupId>
+			<artifactId>jakarta.jms-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
+		</dependency>
+
+	</dependencies>
+  
+  
+  
+<build>
+	<finalName>ejbbean</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-ejb-plugin</artifactId>
+            <version>3.2.1</version>
+            <configuration>
+             	<ejbVersion>3.0</ejbVersion>
+                <!-- this is false by default -->
+          		<generateClient>true</generateClient>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+</project>

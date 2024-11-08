@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+    <h1>文件上传表单2</h1>
+    <form action="/ejbweb/upload" method="post" enctype="multipart/form-data">
+        <label for="file">选择文件：</label>
+        <input type="file" id="file" name="file" required><br><br>
+
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="description">描述：</label>
+        <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+
+        <button type="submit">上传文件</button>
+    </form>
+</body>
+</html>

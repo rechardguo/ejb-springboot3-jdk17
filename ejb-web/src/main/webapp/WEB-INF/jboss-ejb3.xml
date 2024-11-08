@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss:ejb-jar xmlns:jboss="http://www.jboss.com/xml/ns/javaee"
+                  xmlns="http://java.sun.com/xml/ns/javaee"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:iiop="urn:iiop"
+                  xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/j2ee/schema/jboss-ejb3-2_0.xsd
+                     http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/ejb-jar_3_1.xsd"
+                  version="3.1" xmlns:s="urn:security:1.1"
+                  impl-version="2.0" xmlns:d="urn:delivery-active:1.1">
+    <enterprise-beans>
+        <session>
+			<ejb-name>CounterService</ejb-name>
+		</session>
+     </enterprise-beans>
+     
+      <assembly-descriptor>
+		<container-transaction>
+			<method>
+				<ejb-name>CounterService</ejb-name>
+				<method-intf>Remote</method-intf>
+				<method-name>*</method-name>
+			</method>
+			<trans-attribute>Supports</trans-attribute>
+		</container-transaction>
+	</assembly-descriptor>	
+      	
+    <assembly-descriptor>
+        <d:delivery><ejb-name>TestMDB</ejb-name><d:active>true</d:active></d:delivery>
+	</assembly-descriptor>	  	
+      	
+</jboss:ejb-jar>

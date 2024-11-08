@@ -1,0 +1,4 @@
+ [client]
+    host=app-db
+    user=root
+    password=root
