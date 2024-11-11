@@ -39,8 +39,8 @@
     </extensions>
     <system-properties>
         <property name="mqhostName" value="app-mq"/>
-        <property name="mqtransportType" value="CLIENT"/>
-        <property name="mqqueueManager" value="CBMQ"/>
+        <property name="mqtransportType" value="Client"/>
+        <property name="mqqueueManager" value="QM1"/>
         <property name="mqport" value="1414"/>
         <property name="mqchannel" value="SYSTEM.AUTO.SVRCONN"/>
         <property name="mqcountrydeliveryMessage" value="true"/>
@@ -539,7 +539,7 @@
                         jndi-name="java:/jboss/jms/queue/TestQueue" 
                         use-java-context="false" pool-name="TestQueuePool">
                             <config-property name="baseQueueName">
-                                I3.WFE.SG.FILEX.RES
+                                Q1
                             </config-property>
                             <config-property name="targetClient">
                                 MQ

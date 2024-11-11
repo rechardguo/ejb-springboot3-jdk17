@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class MessageListener {
 
 
-    @JmsListener(destination = "TIW.IDEAL.IN.OTT.RCF.REQ")
+    @JmsListener(destination = "Q2")
     public void onMessage(Message msg){
 
         System.out.println(msg);

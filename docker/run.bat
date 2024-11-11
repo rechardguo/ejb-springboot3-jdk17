@@ -1,4 +1,4 @@
-call D:\dev-tools\apache-maven-3.9.7\bin\mvn clean package -Dmaven.test.skip=true -f ../pom.xml
+zzz
 DEL /F .\ejb-web\deployments\*.war
 COPY /Y ..\ejb-web\target\ejbweb.war .\ejb-web\deployments\ejbweb.war
 ::docker build -t ejbdemo .
